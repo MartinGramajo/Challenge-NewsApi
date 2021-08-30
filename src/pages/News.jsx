@@ -31,7 +31,7 @@ export default function News() {
             <FloatingLabel className=" m-auto" controlId="floatingSelect" label="Busca por categorias">
                 <Form.Select onChange={handleChange} aria-label="Floating label select example">
                     <option value="general">general</option>
-                    <option value="busines">Negocios</option>
+                    <option value="business">Negocios</option>
                     <option value="entertainment">Entretenimiento</option>
                     <option value="health">Salud</option>
                     <option value="science">Ciencia</option>
@@ -44,7 +44,7 @@ export default function News() {
                 {articles.map((article, id) =>
                 (<div>
                     <Card className="my-2 mx-3 "  style={{ width: '300px', height:'400px' }}>
-                        <Card.Img style={{ width: '100%', height: '12vw', }} src={article.urlToImage} />
+                        <Card.Img style={{ width: '100%' }} src={article.urlToImage} />
                         <Card.Body>
                             <Card.Title>{article.title}</Card.Title>
                             <Card.Text>
