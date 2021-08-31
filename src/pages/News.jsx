@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Card, Col, Form, FloatingLabel } from 'react-bootstrap'
+import CardsNew from '../components/CardNews'
 
 export default function News() {
     const [articles, setArticles] = useState([])
@@ -8,12 +9,12 @@ export default function News() {
 
    
     
-    const getNews = async () => {
-        const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=ar&apiKey=862184311009478084b1be93894e8cb1&category=${category}`);
-        setArticles(response.data.articles);
-    }
-
+    
     useEffect(() => {
+        const getNews = async () => {
+            const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=ar&apiKey=862184311009478084b1be93894e8cb1&category=${category}`);
+            setArticles(response.data.articles);
+        }
         getNews();
     }, [category])
     
@@ -43,15 +44,7 @@ export default function News() {
             <div className="container d-flex flex-wrap justify-content-center mt-5" as={Col} md="4">
                 {articles.map((article, id) =>
                 (<div>
-                    <Card className="my-2 mx-3 "  style={{ width: '300px', height:'400px' }}>
-                        <Card.Img style={{ width: '100%' }} src={article.urlToImage} />
-                        <Card.Body>
-                            <Card.Title>{article.title}</Card.Title>
-                            <Card.Text>
-                                {article.publishedAt}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
+                    <CardsNew article={article} />
                 </div>))}
             </div>
         </div>
